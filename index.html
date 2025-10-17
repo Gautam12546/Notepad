@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Notepad | Productivity Booster</title>
+    <title>Notepad Pro | Productivity Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
         }
         
         :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #7209b7;
-            --accent: #f72585;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #e63946;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --sidebar-bg: linear-gradient(180deg, #4a1c8c 0%, #3a0ca3 100%);
-            --header-bg: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
-            --premium-gold: #ffd700;
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --card-bg: #ffffff;
+            --sidebar-bg: #1e293b;
+            --header-bg: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --premium-gold: #fbbf24;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 16px;
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
@@ -48,9 +51,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(114, 9, 183, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(247, 37, 133, 0.1) 0%, transparent 30%);
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.1) 0%, transparent 25%);
             z-index: -1;
         }
         
@@ -58,29 +60,30 @@
             max-width: 1400px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             overflow: hidden;
             position: relative;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
         .premium-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(45deg, var(--premium-gold), #ffed4e);
-            color: #8b6914;
+            top: 25px;
+            right: 25px;
+            background: linear-gradient(45deg, var(--premium-gold), #fde68a);
+            color: #92400e;
             padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 700;
             z-index: 10;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
             display: flex;
             align-items: center;
             gap: 6px;
+            letter-spacing: 0.5px;
         }
         
         header {
@@ -98,8 +101,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            z-index: 0;
         }
         
         .header-content {
@@ -117,29 +122,30 @@
         }
         
         .logo-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             background: rgba(255, 255, 255, 0.2);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         .logo-text h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
             margin-bottom: 5px;
-            background: linear-gradient(to right, #fff, #e0e0ff);
+            background: linear-gradient(to right, #fff, #e0e7ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .logo-text p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             opacity: 0.9;
             font-weight: 500;
         }
@@ -153,24 +159,31 @@
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             background: rgba(255, 255, 255, 0.15);
             padding: 10px 20px;
-            border-radius: 50px;
+            border-radius: 14px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .user-profile:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
         }
         
         .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .main-content {
@@ -196,7 +209,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm10 10h20v20H10V10z'/%3E%3C/g%3E%3C/svg%3E");
+            background: 
+                linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                linear-gradient(225deg, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
             z-index: 0;
         }
         
@@ -217,8 +232,9 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
+            letter-spacing: 0.5px;
         }
         
         .month-selector select {
@@ -226,25 +242,27 @@
             padding: 14px 18px;
             border-radius: 12px;
             border: none;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 16px;
+            transition: all 0.3s ease;
         }
         
         .month-selector select:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
         }
         
         .month-selector select option {
-            background: #3a0ca3;
+            background: #334155;
             color: white;
         }
         
@@ -276,7 +294,7 @@
         .note-item {
             padding: 18px;
             margin-bottom: 12px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -293,18 +311,19 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--accent), var(--success));
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            border-radius: 4px 0 0 4px;
         }
         
         .note-item:hover {
             transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
         .note-item.active {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
         
         .note-title {
@@ -313,7 +332,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 1.05rem;
+            font-size: 1rem;
         }
         
         .note-date {
@@ -350,7 +369,7 @@
         .stats {
             display: flex;
             justify-content: space-between;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             padding: 20px;
             border-radius: 12px;
             backdrop-filter: blur(10px);
@@ -376,12 +395,52 @@
             opacity: 0.8;
         }
         
-        .editor {
+        .editor-container {
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 30px;
             background: white;
+        }
+        
+        .editor-tabs {
+            display: flex;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .editor-tab {
+            padding: 16px 28px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+        
+        .editor-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background: white;
+        }
+        
+        .editor-tab:hover:not(.active) {
+            background: rgba(0, 0, 0, 0.03);
+            color: var(--dark);
+        }
+        
+        .editor-content {
+            flex: 1;
+            display: none;
+            padding: 30px;
+        }
+        
+        .editor-content.active {
+            display: flex;
+            flex-direction: column;
         }
         
         .note-header {
@@ -390,12 +449,12 @@
             align-items: center;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #f1f5f9;
         }
         
         .note-title-input {
             flex: 1;
-            padding: 15px 20px;
+            padding: 16px 20px;
             font-size: 1.8rem;
             font-weight: 700;
             border: none;
@@ -411,7 +470,7 @@
         }
         
         .note-title-input::placeholder {
-            color: #adb5bd;
+            color: #cbd5e1;
         }
         
         .note-actions {
@@ -422,14 +481,15 @@
         button {
             padding: 12px 20px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            font-size: 0.9rem;
         }
         
         .btn-primary {
@@ -439,11 +499,11 @@
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+            box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
         }
         
         .btn-secondary {
-            background: linear-gradient(to right, #f1f3f9, #e2e8f0);
+            background: linear-gradient(to right, #f1f5f9, #e2e8f0);
             color: var(--dark);
         }
         
@@ -453,43 +513,142 @@
         }
         
         .btn-danger {
-            background: linear-gradient(to right, var(--danger), #c1121f);
+            background: linear-gradient(to right, var(--danger), #dc2626);
             color: white;
         }
         
         .btn-danger:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.4);
+            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
         }
         
         .note-content {
             flex: 1;
             padding: 25px;
-            border: 1px solid #e9ecef;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             resize: none;
             font-size: 1.05rem;
             line-height: 1.7;
             outline: none;
             transition: all 0.3s;
-            background: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: #f8fafc;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
         }
         
         .note-content:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), inset 0 2px 5px rgba(0, 0, 0, 0.03);
+            background: white;
+        }
+        
+        /* Canvas Editor Styles */
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+        
+        .canvas-toolbar {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .tool-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 15px;
+            border-right: 1px solid #e2e8f0;
+        }
+        
+        .tool-group:last-child {
+            border-right: none;
+        }
+        
+        .tool-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--dark);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tool-btn:hover {
+            background: #f1f5f9;
+            transform: translateY(-1px);
+        }
+        
+        .tool-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+        }
+        
+        .color-picker {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .brush-size {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .brush-size input {
+            width: 120px;
+        }
+        
+        .canvas-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        
+        #drawingCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
             background: white;
         }
         
         footer {
             padding: 25px;
             text-align: center;
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            background: linear-gradient(to right, #f8fafc, #f1f5f9);
             color: var(--gray);
             font-size: 0.9rem;
-            border-top: 1px solid #dee2e6;
+            border-top: 1px solid #e2e8f0;
         }
         
         /* Animation for note items */
@@ -500,6 +659,20 @@
         
         .note-item {
             animation: fadeIn 0.4s ease;
+        }
+        
+        /* Premium features indicator */
+        .feature-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(45deg, var(--premium-gold), #fde68a);
+            color: #92400e;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 8px;
         }
         
         /* Responsive Design */
@@ -531,7 +704,7 @@
             }
             
             .container {
-                border-radius: 15px;
+                border-radius: 14px;
             }
             
             header {
@@ -565,23 +738,63 @@
                 justify-content: center;
             }
             
-            .sidebar, .editor {
+            .sidebar, .editor-content {
                 padding: 25px 20px;
+            }
+            
+            .canvas-toolbar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .tool-group {
+                padding: 0 10px;
+            }
+            
+            .editor-tabs {
+                flex-direction: column;
+            }
+            
+            .editor-tab {
+                padding: 14px 20px;
             }
         }
         
-        /* Premium features indicator */
-        .feature-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: linear-gradient(45deg, var(--premium-gold), #ffed4e);
-            color: #8b6914;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-left: 8px;
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .user-profile {
+                padding: 8px 15px;
+            }
+            
+            .note-title-input {
+                font-size: 1.5rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stat-item {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -589,18 +802,18 @@
     <div class="container">
         <div class="premium-badge">
             <i class="fas fa-crown"></i>
-            PREMIUM
+            PRO
         </div>
         
         <header>
             <div class="header-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fas fa-lightbulb"></i>
                     </div>
                     <div class="logo-text">
-                        <h1>Premium Notepad</h1>
-                        <p>Your Ultimate Productivity Booster</p>
+                        <h1>Notepad Pro</h1>
+                        <p>Your Ideas, Organized Beautifully</p>
                     </div>
                 </div>
                 
@@ -610,8 +823,8 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <div>
-                            <div>John Doe</div>
-                            <div style="font-size: 0.8rem; opacity: 0.8;">Pro Plan</div>
+                            <div>Alex Johnson</div>
+                            <div style="font-size: 0.8rem; opacity: 0.8;">Pro Member</div>
                         </div>
                     </div>
                 </div>
@@ -622,7 +835,7 @@
             <div class="sidebar">
                 <div class="sidebar-content">
                     <div class="month-selector">
-                        <label for="monthSelect"><i class="fas fa-calendar-alt"></i> SELECT MONTH</label>
+                        <label for="monthSelect"><i class="fas fa-calendar-week"></i> SELECT MONTH</label>
                         <select id="monthSelect">
                             <!-- Options will be populated by JavaScript -->
                         </select>
@@ -649,34 +862,105 @@
                 </div>
             </div>
             
-            <div class="editor">
-                <div class="note-header">
-                    <input type="text" id="noteTitle" class="note-title-input" placeholder="Note Title">
-                    <div class="note-actions">
-                        <button id="saveBtn" class="btn-primary"><i class="fas fa-save"></i> Save</button>
-                        <button id="newBtn" class="btn-secondary"><i class="fas fa-plus"></i> New</button>
-                        <button id="deleteBtn" class="btn-danger"><i class="fas fa-trash"></i> Delete</button>
+            <div class="editor-container">
+                <div class="editor-tabs">
+                    <div class="editor-tab active" data-tab="text">
+                        <i class="fas fa-edit"></i> Text Editor
+                    </div>
+                    <div class="editor-tab" data-tab="canvas">
+                        <i class="fas fa-palette"></i> Canvas <span class="feature-indicator">PRO</span>
                     </div>
                 </div>
                 
-                <textarea id="noteContent" class="note-content" placeholder="Start typing your note here..."></textarea>
+                <div class="editor-content active" id="textEditor">
+                    <div class="note-header">
+                        <input type="text" id="noteTitle" class="note-title-input" placeholder="Note Title">
+                        <div class="note-actions">
+                            <button id="saveBtn" class="btn-primary"><i class="fas fa-save"></i> Save</button>
+                            <button id="newBtn" class="btn-secondary"><i class="fas fa-plus"></i> New</button>
+                            <button id="deleteBtn" class="btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
+                    
+                    <textarea id="noteContent" class="note-content" placeholder="Start typing your note here..."></textarea>
+                </div>
+                
+                <div class="editor-content" id="canvasEditor">
+                    <div class="note-header">
+                        <input type="text" id="canvasTitle" class="note-title-input" placeholder="Canvas Title">
+                        <div class="note-actions">
+                            <button id="saveCanvasBtn" class="btn-primary"><i class="fas fa-save"></i> Save</button>
+                            <button id="clearCanvasBtn" class="btn-secondary"><i class="fas fa-broom"></i> Clear</button>
+                            <button id="newCanvasBtn" class="btn-secondary"><i class="fas fa-plus"></i> New</button>
+                        </div>
+                    </div>
+                    
+                    <div class="canvas-container">
+                        <div class="canvas-toolbar">
+                            <div class="tool-group">
+                                <button class="tool-btn active" data-tool="pen" title="Pen">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                <button class="tool-btn" data-tool="eraser" title="Eraser">
+                                    <i class="fas fa-eraser"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="tool-group">
+                                <input type="color" class="color-picker" id="colorPicker" value="#000000" title="Color">
+                            </div>
+                            
+                            <div class="tool-group brush-size">
+                                <label for="brushSize">Size:</label>
+                                <input type="range" id="brushSize" min="1" max="50" value="5">
+                                <span id="brushSizeValue">5px</span>
+                            </div>
+                            
+                            <div class="tool-group">
+                                <button class="tool-btn" id="undoBtn" title="Undo">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <button class="tool-btn" id="redoBtn" title="Redo">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="canvas-area">
+                            <canvas id="drawingCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>Your notes are securely saved in your browser's local storage and automatically organized by month <span class="feature-indicator">PREMIUM</span></p>
+            <p>Your notes are securely saved in your browser's local storage and automatically organized by month <span class="feature-indicator">PRO</span></p>
         </footer>
     </div>
 
     <script>
-        // Premium Notepad application
+        // Premium Notepad application with Canvas Editor
         class PremiumNotepad {
             constructor() {
                 this.notes = this.loadNotes();
                 this.currentNoteId = null;
                 this.currentMonth = this.getCurrentMonthKey();
                 
+                // Canvas state
+                this.canvas = null;
+                this.ctx = null;
+                this.isDrawing = false;
+                this.lastX = 0;
+                this.lastY = 0;
+                this.currentTool = 'pen';
+                this.currentColor = '#000000';
+                this.brushSize = 5;
+                this.history = [];
+                this.historyStep = -1;
+                
                 this.initializeElements();
+                this.setupCanvas();
                 this.populateMonthSelector();
                 this.showNotesForMonth(this.currentMonth);
                 this.updateStats();
@@ -699,6 +983,58 @@
                 this.notesCount = document.getElementById('notesCount');
                 this.wordsCount = document.getElementById('wordsCount');
                 this.charsCount = document.getElementById('charsCount');
+                
+                // Canvas elements
+                this.canvasTitle = document.getElementById('canvasTitle');
+                this.saveCanvasBtn = document.getElementById('saveCanvasBtn');
+                this.clearCanvasBtn = document.getElementById('clearCanvasBtn');
+                this.newCanvasBtn = document.getElementById('newCanvasBtn');
+                this.colorPicker = document.getElementById('colorPicker');
+                this.brushSize = document.getElementById('brushSize');
+                this.brushSizeValue = document.getElementById('brushSizeValue');
+                this.undoBtn = document.getElementById('undoBtn');
+                this.redoBtn = document.getElementById('redoBtn');
+                
+                // Tab elements
+                this.textEditor = document.getElementById('textEditor');
+                this.canvasEditor = document.getElementById('canvasEditor');
+                this.editorTabs = document.querySelectorAll('.editor-tab');
+            }
+            
+            setupCanvas() {
+                this.canvas = document.getElementById('drawingCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                
+                // Set canvas size
+                this.resizeCanvas();
+                window.addEventListener('resize', () => this.resizeCanvas());
+                
+                // Set initial canvas style
+                this.ctx.fillStyle = 'white';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Set line properties
+                this.ctx.lineJoin = 'round';
+                this.ctx.lineCap = 'round';
+                this.ctx.lineWidth = this.brushSize.value;
+                this.ctx.strokeStyle = this.colorPicker.value;
+                
+                // Save initial state to history
+                this.saveToHistory();
+            }
+            
+            resizeCanvas() {
+                const container = this.canvas.parentElement;
+                this.canvas.width = container.clientWidth;
+                this.canvas.height = container.clientHeight;
+                
+                // Redraw if we have history
+                if (this.history.length > 0) {
+                    this.restoreFromHistory(this.historyStep);
+                } else {
+                    this.ctx.fillStyle = 'white';
+                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                }
             }
             
             createSampleNotes() {
@@ -708,7 +1044,7 @@
                 this.notes[monthKey] = [
                     {
                         id: 'note_1',
-                        title: 'Welcome to Premium Notepad',
+                        title: 'Welcome to Notepad Pro',
                         content: 'This is your premium productivity tool. Create, organize, and manage your notes with ease. All your notes are automatically saved and organized by month.',
                         createdAt: new Date().toISOString(),
                         updatedAt: new Date().toISOString()
@@ -719,6 +1055,14 @@
                         content: 'Meeting Date: [Date]\nAttendees: [Names]\nAgenda:\n1. [Topic 1]\n2. [Topic 2]\n3. [Topic 3]\n\nAction Items:\n- [ ] Task 1\n- [ ] Task 2\n- [ ] Task 3',
                         createdAt: new Date(Date.now() - 86400000).toISOString(),
                         updatedAt: new Date(Date.now() - 86400000).toISOString()
+                    },
+                    {
+                        id: 'canvas_1',
+                        title: 'Sample Canvas Drawing',
+                        type: 'canvas',
+                        content: '', // Canvas data would be stored here
+                        createdAt: new Date(Date.now() - 172800000).toISOString(),
+                        updatedAt: new Date(Date.now() - 172800000).toISOString()
                     }
                 ];
                 
@@ -726,6 +1070,7 @@
             }
             
             attachEventListeners() {
+                // Text editor events
                 this.saveBtn.addEventListener('click', () => this.saveNote());
                 this.newBtn.addEventListener('click', () => this.createNewNote());
                 this.deleteBtn.addEventListener('click', () => this.deleteNote());
@@ -747,6 +1092,253 @@
                         }, 1500);
                     });
                 });
+                
+                // Canvas events
+                this.saveCanvasBtn.addEventListener('click', () => this.saveCanvas());
+                this.clearCanvasBtn.addEventListener('click', () => this.clearCanvas());
+                this.newCanvasBtn.addEventListener('click', () => this.createNewCanvas());
+                this.colorPicker.addEventListener('input', (e) => {
+                    this.ctx.strokeStyle = e.target.value;
+                });
+                this.brushSize.addEventListener('input', (e) => {
+                    this.ctx.lineWidth = e.target.value;
+                    this.brushSizeValue.textContent = `${e.target.value}px`;
+                });
+                this.undoBtn.addEventListener('click', () => this.undo());
+                this.redoBtn.addEventListener('click', () => this.redo());
+                
+                // Drawing events - FIXED COORDINATES
+                this.canvas.addEventListener('mousedown', (e) => this.startDrawing(e));
+                this.canvas.addEventListener('mousemove', (e) => this.draw(e));
+                this.canvas.addEventListener('mouseup', () => this.stopDrawing());
+                this.canvas.addEventListener('mouseout', () => this.stopDrawing());
+                
+                // Touch events for mobile
+                this.canvas.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    const mouseEvent = new MouseEvent('mousedown', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    this.canvas.dispatchEvent(mouseEvent);
+                });
+                
+                this.canvas.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    const mouseEvent = new MouseEvent('mousemove', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    this.canvas.dispatchEvent(mouseEvent);
+                });
+                
+                this.canvas.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    const mouseEvent = new MouseEvent('mouseup', {});
+                    this.canvas.dispatchEvent(mouseEvent);
+                });
+                
+                // Tool buttons
+                document.querySelectorAll('.tool-btn[data-tool]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.tool-btn[data-tool]').forEach(b => {
+                            b.classList.remove('active');
+                        });
+                        e.target.closest('.tool-btn').classList.add('active');
+                        this.currentTool = e.target.closest('.tool-btn').dataset.tool;
+                        
+                        if (this.currentTool === 'eraser') {
+                            this.ctx.strokeStyle = 'white';
+                        } else {
+                            this.ctx.strokeStyle = this.colorPicker.value;
+                        }
+                    });
+                });
+                
+                // Tab switching
+                this.editorTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        const tabName = tab.dataset.tab;
+                        
+                        // Update active tab
+                        this.editorTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        
+                        // Show corresponding editor
+                        document.querySelectorAll('.editor-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        document.getElementById(`${tabName}Editor`).classList.add('active');
+                    });
+                });
+            }
+            
+            // Canvas drawing methods - FIXED
+            startDrawing(e) {
+                this.isDrawing = true;
+                const rect = this.canvas.getBoundingClientRect();
+                this.lastX = e.clientX - rect.left;
+                this.lastY = e.clientY - rect.top;
+            }
+            
+            draw(e) {
+                if (!this.isDrawing) return;
+                
+                const rect = this.canvas.getBoundingClientRect();
+                const currentX = e.clientX - rect.left;
+                const currentY = e.clientY - rect.top;
+                
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.lastX, this.lastY);
+                this.ctx.lineTo(currentX, currentY);
+                this.ctx.stroke();
+                
+                [this.lastX, this.lastY] = [currentX, currentY];
+            }
+            
+            stopDrawing() {
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    this.saveToHistory();
+                }
+            }
+            
+            clearCanvas() {
+                this.ctx.fillStyle = 'white';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                this.saveToHistory();
+            }
+            
+            saveToHistory() {
+                // Remove any future history if we're not at the latest step
+                if (this.historyStep < this.history.length - 1) {
+                    this.history = this.history.slice(0, this.historyStep + 1);
+                }
+                
+                // Save current canvas state
+                this.history.push(this.canvas.toDataURL());
+                this.historyStep++;
+                
+                // Update undo/redo buttons
+                this.updateHistoryButtons();
+            }
+            
+            restoreFromHistory(step) {
+                if (step < 0 || step >= this.history.length) return;
+                
+                const img = new Image();
+                img.onload = () => {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.ctx.drawImage(img, 0, 0);
+                };
+                img.src = this.history[step];
+                
+                this.historyStep = step;
+                this.updateHistoryButtons();
+            }
+            
+            undo() {
+                if (this.historyStep > 0) {
+                    this.restoreFromHistory(this.historyStep - 1);
+                }
+            }
+            
+            redo() {
+                if (this.historyStep < this.history.length - 1) {
+                    this.restoreFromHistory(this.historyStep + 1);
+                }
+            }
+            
+            updateHistoryButtons() {
+                this.undoBtn.disabled = this.historyStep <= 0;
+                this.redoBtn.disabled = this.historyStep >= this.history.length - 1;
+                
+                // Visual feedback for disabled buttons
+                if (this.undoBtn.disabled) {
+                    this.undoBtn.style.opacity = '0.5';
+                    this.undoBtn.style.cursor = 'not-allowed';
+                } else {
+                    this.undoBtn.style.opacity = '1';
+                    this.undoBtn.style.cursor = 'pointer';
+                }
+                
+                if (this.redoBtn.disabled) {
+                    this.redoBtn.style.opacity = '0.5';
+                    this.redoBtn.style.cursor = 'not-allowed';
+                } else {
+                    this.redoBtn.style.opacity = '1';
+                    this.redoBtn.style.cursor = 'pointer';
+                }
+            }
+            
+            createNewCanvas() {
+                this.canvasTitle.value = '';
+                this.clearCanvas();
+                this.currentNoteId = null;
+            }
+            
+            saveCanvas() {
+                const title = this.canvasTitle.value.trim();
+                const content = this.canvas.toDataURL(); // Save canvas as image
+                
+                if (!title) {
+                    alert('Please enter a title for your canvas');
+                    return;
+                }
+                
+                const now = new Date();
+                const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
+                
+                // Initialize month if it doesn't exist
+                if (!this.notes[monthKey]) {
+                    this.notes[monthKey] = [];
+                }
+                
+                if (this.currentNoteId) {
+                    // Update existing note
+                    for (const month in this.notes) {
+                        const noteIndex = this.notes[month].findIndex(n => n.id === this.currentNoteId);
+                        if (noteIndex !== -1) {
+                            // If month changed, move the note
+                            if (month !== monthKey) {
+                                const note = this.notes[month].splice(noteIndex, 1)[0];
+                                note.title = title;
+                                note.content = content;
+                                note.updatedAt = now.toISOString();
+                                this.notes[monthKey].push(note);
+                            } else {
+                                // Update in the same month
+                                this.notes[month][noteIndex].title = title;
+                                this.notes[month][noteIndex].content = content;
+                                this.notes[month][noteIndex].updatedAt = now.toISOString();
+                            }
+                            break;
+                        }
+                    }
+                } else {
+                    // Create new note
+                    const newNote = {
+                        id: 'canvas_' + Date.now(),
+                        title,
+                        content,
+                        type: 'canvas',
+                        createdAt: now.toISOString(),
+                        updatedAt: now.toISOString()
+                    };
+                    
+                    this.notes[monthKey].push(newNote);
+                    this.currentNoteId = newNote.id;
+                }
+                
+                this.saveNotes();
+                this.populateMonthSelector();
+                this.showNotesForMonth(monthKey);
+                this.currentMonth = monthKey;
+                this.monthSelect.value = monthKey;
+                
+                alert('Canvas saved successfully!');
             }
             
             getCurrentMonthKey() {
@@ -828,8 +1420,10 @@
                     const createdDate = new Date(note.createdAt);
                     const formattedDate = createdDate.toLocaleDateString();
                     
+                    const icon = note.type === 'canvas' ? 'fas fa-palette' : 'far fa-file-alt';
+                    
                     noteElement.innerHTML = `
-                        <div class="note-title">${note.title || 'Untitled Note'}</div>
+                        <div class="note-title"><i class="${icon}"></i> ${note.title || 'Untitled Note'}</div>
                         <div class="note-date"><i class="far fa-calendar"></i> ${formattedDate}</div>
                     `;
                     
@@ -852,8 +1446,32 @@
                     const note = this.notes[monthKey].find(n => n.id === noteId);
                     if (note) {
                         this.currentNoteId = noteId;
-                        this.noteTitle.value = note.title;
-                        this.noteContent.value = note.content;
+                        
+                        if (note.type === 'canvas') {
+                            // Load canvas note
+                            this.canvasTitle.value = note.title;
+                            
+                            // Switch to canvas editor
+                            document.querySelector('.editor-tab[data-tab="canvas"]').click();
+                            
+                            // Load canvas image if available
+                            if (note.content) {
+                                const img = new Image();
+                                img.onload = () => {
+                                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                                    this.ctx.drawImage(img, 0, 0);
+                                    this.saveToHistory();
+                                };
+                                img.src = note.content;
+                            }
+                        } else {
+                            // Load text note
+                            this.noteTitle.value = note.title;
+                            this.noteContent.value = note.content;
+                            
+                            // Switch to text editor
+                            document.querySelector('.editor-tab[data-tab="text"]').click();
+                        }
                         
                         // Switch to the month of this note
                         if (monthKey !== this.currentMonth) {
