@@ -3,191 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Notepad</title>
+    <title>Premium Notepad | Productivity Booster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --sidebar-bg: linear-gradient(180deg, #4a1c8c 0%, #3a0ca3 100%);
+            --header-bg: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
+            --premium-gold: #ffd700;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: var(--dark);
             line-height: 1.6;
+            min-height: 100vh;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(114, 9, 183, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(247, 37, 133, 0.1) 0%, transparent 30%);
+            z-index: -1;
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
             overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--premium-gold), #ffed4e);
+            color: #8b6914;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         
         header {
-            background-color: #4a6fa5;
+            background: var(--header-bg);
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 30px 40px;
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            margin-bottom: 10px;
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
         }
         
-        .subtitle {
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .logo-text h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fff, #e0e0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo-text p {
             font-size: 1rem;
             opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
         }
         
         .main-content {
             display: flex;
-            min-height: 500px;
+            min-height: 700px;
         }
         
         .sidebar {
-            width: 250px;
-            background-color: #f0f4f8;
-            padding: 20px;
-            border-right: 1px solid #e1e1e1;
+            width: 320px;
+            background: var(--sidebar-bg);
+            padding: 30px 25px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 0h40v40H0V0zm10 10h20v20H10V10z'/%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .sidebar-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .month-selector {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .month-selector label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         
         .month-selector select {
             width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
             font-size: 1rem;
-            background-color: white;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+        
+        .month-selector select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .month-selector select option {
+            background: #3a0ca3;
+            color: white;
         }
         
         .notes-list {
-            max-height: 400px;
+            flex: 1;
             overflow-y: auto;
+            padding-right: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .notes-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .notes-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .notes-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .notes-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
         }
         
         .note-item {
-            padding: 10px;
-            margin-bottom: 8px;
-            background-color: white;
-            border-radius: 5px;
-            border-left: 4px solid #4a6fa5;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--success));
         }
         
         .note-item:hover {
-            background-color: #e9eff5;
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .note-item.active {
-            background-color: #dbe5f0;
-            border-left: 4px solid #2c5282;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .note-title {
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            font-size: 1.05rem;
         }
         
         .note-date {
             font-size: 0.8rem;
-            color: #666;
-        }
-        
-        .editor {
-            flex: 1;
+            opacity: 0.8;
             display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-        
-        .note-header {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .note-title-input {
-            flex: 1;
-            padding: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
-            border-bottom: 2px solid #e1e1e1;
-            outline: none;
-        }
-        
-        .note-title-input:focus {
-            border-bottom: 2px solid #4a6fa5;
-        }
-        
-        .note-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        
-        .btn-primary {
-            background-color: #4a6fa5;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #3a5a80;
-        }
-        
-        .btn-secondary {
-            background-color: #e1e1e1;
-            color: #333;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #d1d1d1;
-        }
-        
-        .btn-danger {
-            background-color: #e53e3e;
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c53030;
-        }
-        
-        .note-content {
-            flex: 1;
-            padding: 15px;
-            border: 1px solid #e1e1e1;
-            border-radius: 5px;
-            resize: none;
-            font-size: 1rem;
-            line-height: 1.5;
-            outline: none;
-        }
-        
-        .note-content:focus {
-            border-color: #4a6fa5;
+            gap: 5px;
         }
         
         .empty-state {
@@ -197,23 +331,185 @@
             justify-content: center;
             height: 100%;
             text-align: center;
-            color: #666;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 20px;
+        }
+        
+        .empty-state i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
         }
         
         .empty-state h3 {
             margin-bottom: 10px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .editor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            background: white;
+        }
+        
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .note-title-input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border: none;
+            border-bottom: 3px solid transparent;
+            outline: none;
+            background: transparent;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        
+        .note-title-input:focus {
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .note-title-input::placeholder {
+            color: #adb5bd;
+        }
+        
+        .note-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(to right, #f1f3f9, #e2e8f0);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(to right, var(--danger), #c1121f);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .note-content {
+            flex: 1;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            resize: none;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            outline: none;
+            transition: all 0.3s;
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .note-content:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2), inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: white;
         }
         
         footer {
-            padding: 15px;
+            padding: 25px;
             text-align: center;
-            background-color: #f0f4f8;
-            color: #666;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            color: var(--gray);
             font-size: 0.9rem;
-            border-top: 1px solid #e1e1e1;
+            border-top: 1px solid #dee2e6;
         }
         
-        @media (max-width: 768px) {
+        /* Animation for note items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .note-item {
+            animation: fadeIn 0.4s ease;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 280px;
+            }
+        }
+        
+        @media (max-width: 992px) {
             .main-content {
                 flex-direction: column;
             }
@@ -221,28 +517,135 @@
             .sidebar {
                 width: 100%;
                 border-right: none;
-                border-bottom: 1px solid #e1e1e1;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
+            
+            .notes-list {
+                max-height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 15px;
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .user-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .note-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .note-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            button {
+                flex: 1;
+                justify-content: center;
+            }
+            
+            .sidebar, .editor {
+                padding: 25px 20px;
+            }
+        }
+        
+        /* Premium features indicator */
+        .feature-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(45deg, var(--premium-gold), #ffed4e);
+            color: #8b6914;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="premium-badge">
+            <i class="fas fa-crown"></i>
+            PREMIUM
+        </div>
+        
         <header>
-            <h1>Monthly Notepad</h1>
-            <p class="subtitle">Your notes are automatically saved and organized by month</p>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Premium Notepad</h1>
+                        <p>Your Ultimate Productivity Booster</p>
+                    </div>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div>John Doe</div>
+                            <div style="font-size: 0.8rem; opacity: 0.8;">Pro Plan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
         
         <div class="main-content">
             <div class="sidebar">
-                <div class="month-selector">
-                    <select id="monthSelect">
-                        <!-- Options will be populated by JavaScript -->
-                    </select>
-                </div>
-                
-                <div class="notes-list" id="notesList">
-                    <!-- Notes will be populated by JavaScript -->
+                <div class="sidebar-content">
+                    <div class="month-selector">
+                        <label for="monthSelect"><i class="fas fa-calendar-alt"></i> SELECT MONTH</label>
+                        <select id="monthSelect">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="notes-list" id="notesList">
+                        <!-- Notes will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="notesCount">0</div>
+                            <div class="stat-label">Notes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="wordsCount">0</div>
+                            <div class="stat-label">Words</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="charsCount">0</div>
+                            <div class="stat-label">Characters</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -250,9 +653,9 @@
                 <div class="note-header">
                     <input type="text" id="noteTitle" class="note-title-input" placeholder="Note Title">
                     <div class="note-actions">
-                        <button id="saveBtn" class="btn-primary">Save</button>
-                        <button id="newBtn" class="btn-secondary">New</button>
-                        <button id="deleteBtn" class="btn-danger">Delete</button>
+                        <button id="saveBtn" class="btn-primary"><i class="fas fa-save"></i> Save</button>
+                        <button id="newBtn" class="btn-secondary"><i class="fas fa-plus"></i> New</button>
+                        <button id="deleteBtn" class="btn-danger"><i class="fas fa-trash"></i> Delete</button>
                     </div>
                 </div>
                 
@@ -261,13 +664,13 @@
         </div>
         
         <footer>
-            <p>Your notes are saved in your browser's local storage and organized by month</p>
+            <p>Your notes are securely saved in your browser's local storage and automatically organized by month <span class="feature-indicator">PREMIUM</span></p>
         </footer>
     </div>
 
     <script>
-        // Notepad application
-        class MonthlyNotepad {
+        // Premium Notepad application
+        class PremiumNotepad {
             constructor() {
                 this.notes = this.loadNotes();
                 this.currentNoteId = null;
@@ -276,7 +679,13 @@
                 this.initializeElements();
                 this.populateMonthSelector();
                 this.showNotesForMonth(this.currentMonth);
+                this.updateStats();
                 this.attachEventListeners();
+                
+                // Add some sample notes if empty
+                if (Object.keys(this.notes).length === 0) {
+                    this.createSampleNotes();
+                }
             }
             
             initializeElements() {
@@ -287,6 +696,33 @@
                 this.saveBtn = document.getElementById('saveBtn');
                 this.newBtn = document.getElementById('newBtn');
                 this.deleteBtn = document.getElementById('deleteBtn');
+                this.notesCount = document.getElementById('notesCount');
+                this.wordsCount = document.getElementById('wordsCount');
+                this.charsCount = document.getElementById('charsCount');
+            }
+            
+            createSampleNotes() {
+                const now = new Date();
+                const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
+                
+                this.notes[monthKey] = [
+                    {
+                        id: 'note_1',
+                        title: 'Welcome to Premium Notepad',
+                        content: 'This is your premium productivity tool. Create, organize, and manage your notes with ease. All your notes are automatically saved and organized by month.',
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    },
+                    {
+                        id: 'note_2',
+                        title: 'Meeting Notes Template',
+                        content: 'Meeting Date: [Date]\nAttendees: [Names]\nAgenda:\n1. [Topic 1]\n2. [Topic 2]\n3. [Topic 3]\n\nAction Items:\n- [ ] Task 1\n- [ ] Task 2\n- [ ] Task 3',
+                        createdAt: new Date(Date.now() - 86400000).toISOString(),
+                        updatedAt: new Date(Date.now() - 86400000).toISOString()
+                    }
+                ];
+                
+                this.saveNotes();
             }
             
             attachEventListeners() {
@@ -303,11 +739,12 @@
                 [this.noteTitle, this.noteContent].forEach(element => {
                     element.addEventListener('input', () => {
                         clearTimeout(saveTimeout);
+                        this.updateStats();
                         saveTimeout = setTimeout(() => {
                             if (this.currentNoteId) {
                                 this.saveNote();
                             }
-                        }, 1000);
+                        }, 1500);
                     });
                 });
             }
@@ -351,12 +788,13 @@
             }
             
             loadNotes() {
-                const stored = localStorage.getItem('monthlyNotepad');
+                const stored = localStorage.getItem('premiumNotepad');
                 return stored ? JSON.parse(stored) : {};
             }
             
             saveNotes() {
-                localStorage.setItem('monthlyNotepad', JSON.stringify(this.notes));
+                localStorage.setItem('premiumNotepad', JSON.stringify(this.notes));
+                this.updateStats();
             }
             
             showNotesForMonth(monthKey) {
@@ -365,6 +803,7 @@
                 if (!this.notes[monthKey] || this.notes[monthKey].length === 0) {
                     this.notesList.innerHTML = `
                         <div class="empty-state">
+                            <i class="fas fa-sticky-note"></i>
                             <h3>No notes for this month</h3>
                             <p>Create a new note to get started</p>
                         </div>
@@ -380,6 +819,8 @@
                 monthNotes.forEach(note => {
                     const noteElement = document.createElement('div');
                     noteElement.className = 'note-item';
+                    noteElement.setAttribute('data-note-id', note.id);
+                    
                     if (note.id === this.currentNoteId) {
                         noteElement.classList.add('active');
                     }
@@ -389,7 +830,7 @@
                     
                     noteElement.innerHTML = `
                         <div class="note-title">${note.title || 'Untitled Note'}</div>
-                        <div class="note-date">${formattedDate}</div>
+                        <div class="note-date"><i class="far fa-calendar"></i> ${formattedDate}</div>
                     `;
                     
                     noteElement.addEventListener('click', () => this.loadNote(note.id));
@@ -402,6 +843,7 @@
                 this.noteTitle.value = '';
                 this.noteContent.value = '';
                 this.updateActiveNoteInList();
+                this.updateStats();
             }
             
             loadNote(noteId) {
@@ -421,6 +863,8 @@
                         } else {
                             this.updateActiveNoteInList();
                         }
+                        
+                        this.updateStats();
                         break;
                     }
                 }
@@ -534,11 +978,28 @@
                     }
                 }
             }
+            
+            updateStats() {
+                // Update notes count
+                let totalNotes = 0;
+                for (const month in this.notes) {
+                    totalNotes += this.notes[month].length;
+                }
+                this.notesCount.textContent = totalNotes;
+                
+                // Update words and characters count for current note
+                const content = this.noteContent.value;
+                const words = content.trim() ? content.trim().split(/\s+/).length : 0;
+                const chars = content.length;
+                
+                this.wordsCount.textContent = words;
+                this.charsCount.textContent = chars;
+            }
         }
 
         // Initialize the application when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            new MonthlyNotepad();
+            new PremiumNotepad();
         });
     </script>
 </body>
