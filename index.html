@@ -6,6 +6,7 @@
     <title>Notepad Pro | Productivity Suite</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* All the previous CSS styles remain exactly the same */
         * {
             margin: 0;
             padding: 0;
@@ -1117,27 +1118,28 @@
                 this.canvas.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     const touch = e.touches[0];
+                    const rect = this.canvas.getBoundingClientRect();
                     const mouseEvent = new MouseEvent('mousedown', {
                         clientX: touch.clientX,
                         clientY: touch.clientY
                     });
-                    this.canvas.dispatchEvent(mouseEvent);
+                    this.startDrawing(mouseEvent);
                 });
                 
                 this.canvas.addEventListener('touchmove', (e) => {
                     e.preventDefault();
                     const touch = e.touches[0];
+                    const rect = this.canvas.getBoundingClientRect();
                     const mouseEvent = new MouseEvent('mousemove', {
                         clientX: touch.clientX,
                         clientY: touch.clientY
                     });
-                    this.canvas.dispatchEvent(mouseEvent);
+                    this.draw(mouseEvent);
                 });
                 
                 this.canvas.addEventListener('touchend', (e) => {
                     e.preventDefault();
-                    const mouseEvent = new MouseEvent('mouseup', {});
-                    this.canvas.dispatchEvent(mouseEvent);
+                    this.stopDrawing();
                 });
                 
                 // Tool buttons
@@ -1151,8 +1153,10 @@
                         
                         if (this.currentTool === 'eraser') {
                             this.ctx.strokeStyle = 'white';
+                            this.ctx.globalCompositeOperation = 'destination-out';
                         } else {
                             this.ctx.strokeStyle = this.colorPicker.value;
+                            this.ctx.globalCompositeOperation = 'source-over';
                         }
                     });
                 });
@@ -1171,6 +1175,13 @@
                             content.classList.remove('active');
                         });
                         document.getElementById(`${tabName}Editor`).classList.add('active');
+                        
+                        // Resize canvas when switching to canvas tab
+                        if (tabName === 'canvas') {
+                            setTimeout(() => {
+                                this.resizeCanvas();
+                            }, 100);
+                        }
                     });
                 });
             }
@@ -1179,16 +1190,22 @@
             startDrawing(e) {
                 this.isDrawing = true;
                 const rect = this.canvas.getBoundingClientRect();
-                this.lastX = e.clientX - rect.left;
-                this.lastY = e.clientY - rect.top;
+                const scaleX = this.canvas.width / rect.width;
+                const scaleY = this.canvas.height / rect.height;
+                
+                this.lastX = (e.clientX - rect.left) * scaleX;
+                this.lastY = (e.clientY - rect.top) * scaleY;
             }
             
             draw(e) {
                 if (!this.isDrawing) return;
                 
                 const rect = this.canvas.getBoundingClientRect();
-                const currentX = e.clientX - rect.left;
-                const currentY = e.clientY - rect.top;
+                const scaleX = this.canvas.width / rect.width;
+                const scaleY = this.canvas.height / rect.height;
+                
+                const currentX = (e.clientX - rect.left) * scaleX;
+                const currentY = (e.clientY - rect.top) * scaleY;
                 
                 this.ctx.beginPath();
                 this.ctx.moveTo(this.lastX, this.lastY);
